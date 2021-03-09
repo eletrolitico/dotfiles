@@ -44,7 +44,7 @@ if [ $1 == "install" ] || [ $1 == "all" ]; then
   echo "instalou pacotes..."
 
   sudo pacman -Syyuu --noconfirm
-  sudo pacman -S i3-gaps alacritty pulseaudio pavucontrol flameshot nm-applet xorg xorg-xinit xscreensaver zsh go blueman feh openssh docker docker-compose --noconfirm
+  sudo pacman -S i3-gaps alacritty pulseaudio pavucontrol flameshot nm-applet xorg xorg-xinit xscreensaver zsh go blueman feh openssh docker docker-compose gnome-keyring --noconfirm
 
   git clone https://aur.archlinux.org/yay.git
   cd yay
