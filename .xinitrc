@@ -72,7 +72,8 @@ xbanish &
 flameshot &
 
 # Monitor setup
-xrandr --output DVI-D-0 --off --output HDMI-0 --primary --auto --output VGA-0 --auto --right-of HDMI-0
+#xrand
+[ -f $HOME/dotfiles/xrand.sh ] && source $HOME/dotfiles/xrand.sh
 
 # Wallpaper
 feh --bg-fill --randomize ~/Pics/wallpapers/* &
