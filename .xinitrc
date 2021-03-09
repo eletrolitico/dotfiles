@@ -43,7 +43,7 @@ snixembed --fork &
 xsetroot -cursor_name left_ptr
 
 #screensaver
-xscreensaver &
+xscreensaver -nosplash &
 
 # nm-applet
 nm-applet --indicator &
