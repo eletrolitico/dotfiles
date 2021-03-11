@@ -46,33 +46,35 @@ if [ $1 == "link" ] || [ $1 == "all" ]; then
 
   XRAN_FILE="xrand.sh"
 
-  MONITORS=($(xrandr | grep ".* connected" | cut -d ' ' -f1))
-  print_array ${MONITORS[@]}
-  printf "Choose the primary monitor(type the number): "
-  read prM
-  printf 'xrandr' > $XRAN_FILE
+  if [ ! -f $XRAN_FILE ]; then
+    MONITORS=($(xrandr | grep ".* connected" | cut -d ' ' -f1))
+    print_array ${MONITORS[@]}
+    printf "Choose the primary monitor(type the number): "
+    read prM
+    printf 'xrandr' > $XRAN_FILE
 
-  MODES=("--right-of" "--left-of" "--above" "--below")
-  I=0
-  for m in "${MONITORS[@]}"; do
+    MODES=("--right-of" "--left-of" "--above" "--below")
+    I=0
+    for m in "${MONITORS[@]}"; do
 
-    if [ $I -eq $prM ]; then
-      echo -ne " --output ${MONITORS[I]} --primary --auto" >> $XRAN_FILE
-    else
+      if [ $I -eq $prM ]; then
+        echo -ne " --output ${MONITORS[I]} --primary --auto" >> $XRAN_FILE
+      else
 
-      printf "\n\n${MONITORS[I]} is:\n"
-      printf "0: right-of\n1: left-of\n2: above\n3: below\noption: "
-      read mod
+        printf "\n\n${MONITORS[I]} is:\n"
+        printf "0: right-of\n1: left-of\n2: above\n3: below\noption: "
+        read mod
 
-      printf "\n\nwhich monitor:\n"
-      print_array ${MONITORS[@]}
-      printf "option: "
-      read mon
+        printf "\n\nwhich monitor:\n"
+        print_array ${MONITORS[@]}
+        printf "option: "
+        read mon
 
-      echo -ne " --output ${MONITORS[I]} --auto ${MODES[mod]} ${MONITORS[mon]}" >> $XRAN_FILE
-    fi
-    I=$(($I+1))
-  done
+        echo -ne " --output ${MONITORS[I]} --auto ${MODES[mod]} ${MONITORS[mon]}" >> $XRAN_FILE
+      fi
+      I=$(($I+1))
+    done
+  fi
 
   mkdir -p $HOME/Pics/wallpapers
 
