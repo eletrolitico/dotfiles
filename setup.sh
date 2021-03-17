@@ -79,13 +79,19 @@ if [ $1 == "install" ] || [ $1 == "all" ]; then
     playerctl \
     --noconfirm
     
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si --noconfirm
-    cd ..
-    rm -rf yay
+    sudo usermod -s /usr/bin/zsh $USER
     
-    yay -S google-chrome \
+    if [ ! -f "/usr/bin/yay" ]; then
+        git clone https://aur.archlinux.org/yay.git
+        cd yay
+        makepkg -si --noconfirm
+        cd ..
+        rm -rf yay
+    else
+        yay -Syyuu --noconfirm
+    fi
+    
+    yay -S --needed google-chrome \
     visual-studio-code-wayland \
     spotify \
     nerd-fonts-jetbrains-mono \
