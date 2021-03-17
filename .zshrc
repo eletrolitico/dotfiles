@@ -1,5 +1,5 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 export ZSH="/home/henrique/.oh-my-zsh"
@@ -26,10 +26,26 @@ alias dce="docker-compose exec"
 alias dcb="docker-compose build"
 
 alias ssh="TERM=xterm ssh"
+alias sudo="doas"
 
 alias avd="/home/henrique/.config/Android/Sdk/emulator/emulator -avd Pixel_3a_API_30_x86 -netfast -accel on -gpu host -qemu -m 2048"
 [ -f "/home/henrique/.ghcup/env" ] && source "/home/henrique/.ghcup/env" # ghcup-env
 
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx
+
+export LANG=en_US.UTF-8
+
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export BROWSER="google-chrome-stable"
+
+export MOZ_ENABLE_WAYLAND=1
+
+export ANDROID_HOME=$HOME/.config/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+    exec sway
 fi

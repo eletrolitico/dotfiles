@@ -78,19 +78,4 @@ flameshot &
 # Wallpaper
 feh --bg-fill --randomize ~/Pics/wallpapers/* &
 
-
-export LANG=en_US.UTF-8
-export PATH=$PATH:~/.scripts
-export PATH=$PATH:~/.local/bin
-
-export EDITOR="nvim"
-export TERMINAL="alacritty"
-export BROWSER="google-chrome-stable"
-
-export ANDROID_HOME=$HOME/.config/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 exec i3
