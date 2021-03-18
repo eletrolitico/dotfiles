@@ -11,12 +11,18 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #user section
-[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
-
+export LANG=en_US.UTF-8
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export BROWSER="google-chrome-stable"
+export MOZ_ENABLE_WAYLAND=1
 export PATH=$PATH:/home/henrique/go/bin
-export GOPRIVATE="gitalpha.com"
-export SBT_OPTS="-Xms4G -Xmx4G -Xss4M -XX:+CMSClassUnloadingEnabled -Dsbt.override.build.repos=true"
-export SBT_CREDENTIALS=$HOME/.sbt/.credentials
+
+export ANDROID_HOME=$HOME/.config/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export DOCKER_BUILDKIT=1
 alias dcu="docker-compose up -d"
@@ -26,25 +32,10 @@ alias dce="docker-compose exec"
 alias dcb="docker-compose build"
 
 alias ssh="TERM=xterm ssh"
-alias sudo="doas"
 
-alias avd="/home/henrique/.config/Android/Sdk/emulator/emulator -avd Pixel_3a_API_30_x86 -netfast -accel on -gpu host -qemu -m 2048"
-[ -f "/home/henrique/.ghcup/env" ] && source "/home/henrique/.ghcup/env" # ghcup-env
+[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
-
-export LANG=en_US.UTF-8
-
-export EDITOR="nvim"
-export TERMINAL="alacritty"
-export BROWSER="google-chrome-stable"
-
-export MOZ_ENABLE_WAYLAND=1
-
-export ANDROID_HOME=$HOME/.config/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+[ -f "cust.zsh" ] && source "cust.zsh"
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
     exec sway
