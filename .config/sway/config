@@ -67,8 +67,8 @@ input * {
 
 # Output configuration
 output * bg $background fill
-output DP-3 pos 0 0 res 3840x2160 scale 1.5
-output HDMI-1 pos 2560 0 res 1920x1080
+output DP-3 pos 0 0 res 3840x2160 scale 2
+output HDMI-1 pos 1920 0 res 1920x1080
 
 # Default workspaces for common programs
 assign [class="^Spotify$"] $ws9
@@ -90,7 +90,7 @@ bindsym $mod+Escape exec $power
 bindsym $mod+End exec $wifi
 
 # Notifications
-bindsym Control+Space exec makoctl dismiss
+# bindsym Control+Space exec makoctl dismiss
 bindsym Control+Shift+Space exec makoctl dismiss --all
 
 # Multimedia
@@ -111,8 +111,6 @@ bindsym $mod+Home exec --no-startup-id pkill -USR1 redshift
 # Idle configuration
 exec swayidle \
     timeout 300 'exec $lock' \
-    timeout 600 'swaymsg "output * dpms off"' \
-    after-resume 'swaymsg "output * dpms on"' \
     before-sleep 'exec $lock'
 
 # Move your focus around

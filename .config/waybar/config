@@ -1,142 +1,144 @@
-{
+[
+  {
     "layer": "bottom",
     "position": "top",
+    "output": "DP-3",
     "height": 30,
     "modules-left": [
-        "sway/workspaces",
-        "sway/window",
-        "sway/mode"
+      "sway/workspaces",
+      "sway/window",
+      "sway/mode"
     ],
     "modules-center": [
-        "custom/spotify"
+      "custom/spotify"
     ],
     "modules-right": [
-        "custom/mail",
-        "custom/storage",
-        "backlight",
-        "pulseaudio",
-        "battery",
-        "tray",
-        "clock"
+      "custom/storage",
+      "pulseaudio",
+      "tray",
+      "idle_inhibitor",
+      "clock"
     ],
     "sway/mode": {
-        "format": " {}"
+      "format": " {}"
     },
     "sway/workspaces": {
-        "format": "{name}",
-        "disable-scroll": true
+      "format": "{name}",
+      "disable-scroll": true
     },
     "sway/window": {
-        "max-length": 80,
-        "tooltip": false
+      "max-length": 80,
+      "tooltip": false
     },
     "clock": {
-        "format": "{:%d/%m/%y %H:%M}",
-        "tooltip": false
+      "format": "{:%d/%m/%y %H:%M}",
+      "tooltip": false
     },
     "battery": {
-        "format": "{capacity}% {icon}",
-        "format-alt": "{time} {icon}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "format-charging": "{capacity}% ",
-        "interval": 30,
-        "states": {
-            "warning": 25,
-            "critical": 10
-        },
-        "tooltip": false
+      "format": "{capacity}% {icon}",
+      "format-alt": "{time} {icon}",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "format-charging": "{capacity}% ",
+      "interval": 30,
+      "states": {
+        "warning": 25,
+        "critical": 10
+      },
+      "tooltip": false
     },
     "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-alt": "{icon}",
-        "format-alt-click": "click-right",
-        "format-muted": "",
-        "format-icons": {
-            "phone": [
-                " ",
-                " ",
-                " ",
-                " "
-            ],
-            "default": [
-                "",
-                "",
-                "",
-                ""
-            ]
-        },
-        "scroll-step": 10,
-        "on-click": "pavucontrol",
-        "tooltip": false
+      "format": "{volume}% {icon}",
+      "format-alt": "{icon}",
+      "format-alt-click": "click-right",
+      "format-muted": "ﱝ",
+      "format-icons": {
+        "phone": [
+          " ",
+          " ",
+          " 墳",
+          " "
+        ],
+        "default": [
+          "",
+          "",
+          "墳",
+          ""
+        ]
+      },
+      "scroll-step": 10,
+      "on-click": "pavucontrol",
+      "tooltip": false
     },
     "custom/spotify": {
-        "interval": 1,
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/spotify.sh",
-        "exec-if": "pgrep spotify",
-        "escape": true,
-        "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl next"
+      "interval": 1,
+      "return-type": "json",
+      "exec": "~/.config/waybar/modules/spotify.sh",
+      "exec-if": "pgrep spotify",
+      "escape": true,
+      "on-click": "playerctl play-pause",
+      "on-click-right": "playerctl next"
     },
     "custom/storage": {
-        "format": "{} ",
-        "format-alt": "{percentage}% ",
-        "format-alt-click": "click-right",
-        "return-type": "json",
-        "interval": 60,
-        "exec": "~/.config/waybar/modules/storage.sh"
+      "format": "{} ",
+      "format-alt": "{percentage}% ",
+      "format-alt-click": "click-right",
+      "return-type": "json",
+      "interval": 60,
+      "exec": "~/.config/waybar/modules/storage.sh"
     },
     "backlight": {
-        "format": "{icon}",
-        "format-alt": "{percent}% {icon}",
-        "format-alt-click": "click-right",
-        "format-icons": [
-            "",
-            ""
-        ],
-        "on-scroll-down": "light -A 1",
-        "on-scroll-up": "light -U 1"
-    },
-    "custom/weather": {
-        "format": "{}",
-        "format-alt": "{alt}: {}",
-        "format-alt-click": "click-right",
-        "interval": 1800,
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/weather.sh",
-        "exec-if": "ping wttr.in -c1"
+      "format": "{icon}",
+      "format-alt": "{percent}% {icon}",
+      "format-alt-click": "click-right",
+      "format-icons": [
+        "",
+        ""
+      ],
+      "on-scroll-down": "light -A 1",
+      "on-scroll-up": "light -U 1"
     },
     "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        },
-        "tooltip": false
-    },
-    "custom/mail": {
-        "format": "",
-        "format-alt": "{alt} ",
-        "format-alt-click": "click-right",
-        "interval": 60,
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/mail.py",
-        "tooltip": false
-    },
-    "custom/test": {
-        "format": "{}",
-        "exec": "/tmp/test blub",
-        "param": "blah",
-        "interval": 5
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      },
+      "tooltip": false
     },
     "tray": {
-        "icon-size": 15,
-        "spacing": 5
+      "icon-size": 15,
+      "spacing": 5
     }
-}
+  },
+  {
+    "layer": "bottom",
+    "position": "top",
+    "output": "HDMI-A-1",
+    "height": 30,
+    "modules-left": [
+      "sway/window",
+      "sway/mode"
+    ],
+    "modules-center": [],
+    "modules-right": [
+      "sway/workspaces"
+    ],
+    "sway/mode": {
+      "format": " {}"
+    },
+    "sway/workspaces": {
+      "format": "{name}",
+      "disable-scroll": true
+    },
+    "sway/window": {
+      "max-length": 80,
+      "tooltip": false
+    }
+  }
+]

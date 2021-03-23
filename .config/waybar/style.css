@@ -10,11 +10,11 @@
 
 window {
   color: rgba(217, 216, 216, 1);
-  background: rgba(35, 31, 32, 0);
+  background: rgba(35, 31, 32, 0.65);
 }
 
 window#waybar.solo {
-  color: rgba(217, 216, 216, 1);
+  color: rgba(217, 216, 216, 0.9);
   background: rgba(35, 31, 32, 0.85);
 }
 
@@ -38,6 +38,7 @@ window#waybar.solo {
 
 #workspaces button.urgent {
   color: rgba(238, 46, 36, 1);
+  background-color: rgba(100,20,10,1);
 }
 
 #mode,

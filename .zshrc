@@ -17,6 +17,9 @@ export TERMINAL="alacritty"
 export BROWSER="google-chrome-stable"
 export MOZ_ENABLE_WAYLAND=1
 export PATH=$PATH:/home/henrique/go/bin
+export XDG_CURRENT_DESKTOP=sway
+
+export GITSTATUS_LOG_LEVEL=DEBUG
 
 export ANDROID_HOME=$HOME/.config/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -35,7 +38,7 @@ alias ssh="TERM=xterm ssh"
 
 [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
-[ -f "cust.zsh" ] && source "cust.zsh"
+[ -f "$HOME/dotfiles/cust.zsh" ] && source "$HOME/dotfiles/cust.zsh"
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
     exec sway
