@@ -92,7 +92,7 @@ if [ $1 == "install" ] || [ $1 == "all" ]; then
     fi
     
     yay -S --needed google-chrome \
-    visual-studio-code-wayland \
+    visual-studio-code-bin \
     spotify \
     nerd-fonts-jetbrains-mono \
     nerd-fonts-source-code-pro \
