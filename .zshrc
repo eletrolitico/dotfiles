@@ -11,6 +11,10 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #user section
+
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+
 export LANG=en_US.UTF-8
 export EDITOR="nvim"
 export TERMINAL="alacritty"
@@ -18,6 +22,7 @@ export BROWSER="google-chrome-stable"
 export MOZ_ENABLE_WAYLAND=1
 export PATH=$PATH:/home/henrique/go/bin
 export XDG_CURRENT_DESKTOP=sway
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 export GITSTATUS_LOG_LEVEL=DEBUG
 

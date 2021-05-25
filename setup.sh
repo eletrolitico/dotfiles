@@ -29,7 +29,7 @@ if  [ $# -ne 1 ] || [[ $1 != "link" && $1 != "install" && $1 != "all" ]] ; then
     echo "  link - symlinks config files"
     echo "  install - installs packages (including yay)"
     echo "  all - symlinks configs and install packages"
-    
+
     exit 1
 fi
 
@@ -43,9 +43,9 @@ if [ $1 == "link" ] || [ $1 == "all" ]; then
     else
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git .oh-my-zsh/custom/themes/powerlevel10k
     fi
-    
+
     mkdir -p $HOME/Pics/wallpapers
-    
+
     link ".oh-my-zsh"
     link ".zshrc"
     link ".p10k.zsh"
@@ -77,10 +77,11 @@ if [ $1 == "install" ] || [ $1 == "all" ]; then
     gnome-keyring \
     network-manager-applet \
     playerctl \
+    jq \
     --noconfirm
-    
+
     sudo usermod -s /usr/bin/zsh $USER
-    
+
     if [ ! -f "/usr/bin/yay" ]; then
         git clone https://aur.archlinux.org/yay.git
         cd yay
@@ -90,12 +91,14 @@ if [ $1 == "install" ] || [ $1 == "all" ]; then
     else
         yay -Syyuu --noconfirm
     fi
-    
+
     yay -S --needed google-chrome \
     visual-studio-code-bin \
     spotify \
     nerd-fonts-jetbrains-mono \
     nerd-fonts-source-code-pro \
     nerd-fonts-fira-code \
+    corrupter-bin \
+    autotiling \
     --noconfirm
 fi

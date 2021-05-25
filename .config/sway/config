@@ -49,7 +49,6 @@ gaps inner 10
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id nm-applet --indicator
 exec --no-startup-id mako
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id redshift -c ~/.config/redshift/config
 #exec mailspring
 #exec spotify
@@ -59,16 +58,16 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Input configuration
 input * {
-    xkb_layout us
-    xkb_variant intl
+    xkb_layout br
+    xkb_variant abnt2
     repeat_delay 210
     repeat_rate 40
 }
 
 # Output configuration
 output * bg $background fill
-output DP-3 pos 0 0 res 3840x2160 scale 1.75
-output HDMI-A-1 pos 2194 200 res 1920x1080
+#output DP-3 pos 0 0 res 3840x2160 scale 1.75
+#output HDMI-A-1 pos 2194 200 res 1920x1080
 
 # Default workspaces for common programs
 assign [class="^Spotify$"] $ws9
