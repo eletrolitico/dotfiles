@@ -6,7 +6,7 @@ exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-ag
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id picom &
-exec_always setxkbmap -layout br,pt
+exec_always setxkbmap -layout en,intl
 #exec_always --no-startup-id killall picom && picom -b
 #
 # #---Basic Definitions---# #
@@ -27,7 +27,7 @@ set $hibernate sudo -A systemctl hibernate
 floating_modifier $mod
 
 # #---Gaps---# #
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
 gaps inner $inner_gaps
 gaps outer $outer_gaps
 
@@ -58,8 +58,8 @@ bindsym $mod+t 			            exec $term -e ytop
 bindsym $mod+Shift+t            focus mode_toggle
 
 # y
-bindsym $mod+y			            exec --no-startup-id flameshot gui -p ~/Pics/screenshots
-bindsym $mod+Shift+y		        exec --no-startup-id flameshot full -p ~/Pics/screenshots
+bindsym $mod+y			            exec --no-startup-id flameshot gui -p ~/Pictures/screenshots
+bindsym $mod+Shift+y		        exec --no-startup-id flameshot full -p ~/Pictures/screenshots
 
 # u
 bindsym $mod+u                  [urgent=latest] focus
@@ -126,7 +126,7 @@ bindsym $mod+Shift+p		        exec --no-startup-id killall picom
 bindsym $mod+v			            exec --no-startup-id mpv /dev/video0
 
 # b
-bindsym $mod+b			            exec --no-startup-id feh --bg-fill --randomize ~/Pics/wallpapers/*
+bindsym $mod+b			            exec --no-startup-id feh --bg-fill --randomize ~/Pictures/wallpapers/*
 
 # n
 bindsym $mod+n			            exec --no-startup-id kill -s USR1 $(pidof deadd-notification-center)

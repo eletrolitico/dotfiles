@@ -76,7 +76,7 @@ if [ $1 == "link" ] || [ $1 == "all" ]; then
     done
   fi
 
-  mkdir -p $HOME/Pics/wallpapers
+  mkdir -p $HOME/Pictures/wallpapers
 
   link ".oh-my-zsh"
   link ".xinitrc"
@@ -92,7 +92,7 @@ if [ $1 == "install" ] || [ $1 == "all" ]; then
   sudo pacman -Syyuu --noconfirm
   sudo pacman -S i3-gaps \
   alacritty \
-  pulseaudio \
+  pipewire-pulse \
   pavucontrol \
   flameshot \
   nm-applet \
@@ -108,13 +108,18 @@ if [ $1 == "install" ] || [ $1 == "all" ]; then
   docker-compose \
   gnome-keyring \
   network-manager-applet \
+  picom \
   --noconfirm
 
-  git clone https://aur.archlinux.org/yay.git
-  cd yay
-  makepkg -si --noconfirm
-  cd ..
-  rm -rf yay
+  if [ ! -f "/usr/bin/yay" ]; then
+      git clone https://aur.archlinux.org/yay.git
+      cd yay
+      makepkg -si --noconfirm
+      cd ..
+      rm -rf yay
+  else
+      yay -Syyuu --noconfirm
+  fi
 
   yay -S polybar \
   deadd-notification-center-bin \
@@ -122,7 +127,6 @@ if [ $1 == "install" ] || [ $1 == "all" ]; then
   mpris-ctl \
   xbanish \
   snixembed-git \
-  picom-jonaburg-git \
   spotify \
   google-chrome \
   nerd-fonts-jetbrains-mono \

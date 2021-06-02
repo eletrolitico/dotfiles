@@ -76,7 +76,7 @@ flameshot &
 [ -f $HOME/dotfiles/xrand.sh ] && source $HOME/dotfiles/xrand.sh
 
 # Wallpaper
-feh --bg-fill --randomize ~/Pics/wallpapers/* &
+feh --bg-fill --randomize ~/Pictures/wallpapers/* &
 
 
 export LANG=en_US.UTF-8
