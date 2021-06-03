@@ -6,7 +6,7 @@ exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-ag
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id picom &
-exec_always setxkbmap -layout en,intl
+exec_always setxkbmap -layout us -variant intl
 #exec_always --no-startup-id killall picom && picom -b
 #
 # #---Basic Definitions---# #
