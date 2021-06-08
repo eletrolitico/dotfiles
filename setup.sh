@@ -95,7 +95,6 @@ if [ $1 == "install" ] || [ $1 == "all" ]; then
   pipewire-pulse \
   pavucontrol \
   flameshot \
-  nm-applet \
   xorg \
   xorg-xinit \
   xscreensaver \
@@ -109,7 +108,7 @@ if [ $1 == "install" ] || [ $1 == "all" ]; then
   gnome-keyring \
   network-manager-applet \
   picom \
-  --noconfirm
+  --noconfirm --needed
 
   if [ ! -f "/usr/bin/yay" ]; then
       git clone https://aur.archlinux.org/yay.git
