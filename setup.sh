@@ -92,13 +92,12 @@ if [ $1 == "install" ] || [ $1 == "all" ]; then
         yay -Syyuu --noconfirm
     fi
 
-    yay -S --needed google-chrome \
+    yay -S --needed \
     visual-studio-code-bin \
-    spotify \
+    spotify-edge \
     nerd-fonts-jetbrains-mono \
     nerd-fonts-source-code-pro \
     nerd-fonts-fira-code \
-    corrupter-bin \
     autotiling \
     --noconfirm
 fi

@@ -38,7 +38,7 @@ window#waybar.solo {
 
 #workspaces button.urgent {
   color: rgba(238, 46, 36, 1);
-  background-color: rgba(100,20,10,1);
+  background-color: rgba(100, 20, 10, 1);
 }
 
 #mode,
@@ -64,6 +64,10 @@ window#waybar.solo {
 #clock {
   margin: 0px 5px 0px 0px;
   min-width: 140px;
+}
+
+#battery {
+  margin-right: 20px;
 }
 
 #battery.warning {

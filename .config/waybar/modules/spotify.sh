@@ -1,13 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 
 class=$(playerctl metadata --player=spotify --format '{{lc(status)}}')
 
+info=$(playerctl metadata --player=spotify --format '{{artist}}: {{title}}')
 
-info=$(playerctl metadata --player=spotify --format '{{artist}}[{{album}}]: {{title}}')
-if [[ ${#info} > 70 ]]; then
-  info=$(echo $info | cut -c1-70)"..."
+cut=60
+
+if [[ ${#info} > $cut ]]; then
+  info=$(echo $info | cut -c1-$cut)"..."
 fi
-text=$info
 
 
-echo -e "{\"text\":\""$text"\", \"class\":\""$class"\"}"
+echo -e "{\"text\":\""$info"\", \"class\":\""$class"\"}"

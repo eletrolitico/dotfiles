@@ -1,13 +1,10 @@
 # Variables
 set $mod Mod4
-set $lock ~/.local/bin/scripts/lock.sh
-set $power ~/.config/rofi/modi/power
-set $wifi ~/.config/rofi/modi/nmcli
+set $lock swaylock -c 000000
 set $term alacritty
-set $menu rofi -show drun
-set $screenshot grim ~/Pics/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
-set $screenclip slurp | grim -g - ~/Pics/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
-set $background ~/Pics/wallpapers/wallpaper.jpg
+set $menu bemenu-run
+set $screenshot pkill slurp || grim -g "$(slurp -o)" - | swappy -f -
+set $screenclip pkill slurp || grim -g "$(slurp)" - | swappy -f -
 
 set $cl_high #009ddc
 set $cl_indi #d9d8d8
@@ -42,8 +39,7 @@ default_border pixel 1
 default_floating_border normal
 hide_edge_borders smart
 
-smart_gaps on
-gaps inner 10
+gaps inner 0
 
 # Autostart
 exec_always --no-startup-id autotiling
@@ -58,25 +54,34 @@ exec --no-startup-id mako
 
 # Input configuration
 input * {
-    xkb_layout br
-    xkb_variant abnt2
+    xkb_layout us
+    xkb_variant intl
     repeat_delay 210
     repeat_rate 40
 }
 
 # Output configuration
-output * bg $background fill
-#output DP-3 pos 0 0 res 3840x2160 scale 1.75
-#output HDMI-A-1 pos 2194 200 res 1920x1080
+output HDMI-A-1 {
+    position 1920 0
+    mode 3840x2160
+    scale 1.25
+    subpixel rgb
+}
+
+output eDP-1 {
+    position 0 0
+    mode 1920x1080
+    subpixel rgb
+}
 
 # Default workspaces for common programs
 assign [class="^Spotify$"] $ws9
 
 # Shortcuts
 bindsym $mod+Return exec $term
-bindsym $mod+Print exec $screenshot
-bindsym $mod+Shift+Print exec $screenclip
-bindsym $mod+Space exec $menu
+bindsym Print exec $screenshot
+bindsym Shift+Print exec $screenclip
+bindsym $mod+d exec $menu
 
 bindsym $mod+q kill
 bindsym $mod+F1 reload
@@ -85,8 +90,6 @@ bindsym $mod+Shift+F1 exit
 #bindsym $mod+v splitv
 
 bindsym $mod+l exec $lock
-bindsym $mod+Escape exec $power
-bindsym $mod+End exec $wifi
 
 # Notifications
 # bindsym Control+Space exec makoctl dismiss
@@ -151,6 +154,7 @@ bindsym $mod+Shift+0    move container to workspace $ws0
 
 
 # Layout stuff:
+for_window [shell="xwayland"] title_format "%title [XWayland]"
 
 # Switch the current container between different layout styles
 bindsym $mod+s layout stacking
@@ -165,7 +169,7 @@ floating_modifier $mod
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+f floating toggle
 # Swap focus between the tiling area and the floating area
-bindsym $mod+d focus mode_toggle
+bindsym $mod+Space focus mode_toggle
 
 # move focus to the parent container
 bindsym $mod+a focus parent
@@ -191,22 +195,25 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
-mode "$mode_system" {
-    bindsym l exec $lock, mode "default"
-    bindsym e exit
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-    bindsym Shift+r exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
-
-    # return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Shift+e mode "$mode_system"
 
 exec_always ~/.config/waybar/waybar.sh
+exec_always --no-startup-id xembedsniproxy
 
+# theme config
+set $gnome-schema org.gnome.desktop.interface
 
-include ~/.config/sway/$(hostname)/*
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+    gsettings set $gnome-schema icon-theme 'Tela-circle-purple-dark'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema font-name 'DejaVu'
+}
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+exec --no-startup-id lxpolkit
+exec /home/henrique/.azotebg
+
+include ~/.config/sway/config.d/*.conf
